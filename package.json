@@ -1,0 +1,27 @@
+{
+  "name": "casbin-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run lint && nodemon --exec babel-node index.js -e conf,csv,js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "core-js": "^3.6.5",
+    "jest": "^26.0.1"
+  },
+  "dependencies": {
+    "casbin": "^4.7.2",
+    "eslint": "^6.4.0"
+  }
+}

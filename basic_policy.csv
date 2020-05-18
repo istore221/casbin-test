@@ -1,0 +1,22 @@
+p, sysuser, 		sg/b1/*/*/* 		, * 	, *
+p, floor1admin, 	sg/b1/f1/*/* 		, * 	, *
+p, floor2admin, 	sg/b1/f2/*/* 		, * 	, *
+p, floor3admin, 	sg/b1/f3/*/* 		, * 	, *
+
+
+#user role mapping
+g, alice, sysuser
+g, jack, floor1admin
+g, neil, floor2admin
+g, sandra, floor3admin
+
+
+#object groups
+g2, sg/b1/f1/desk/1000, zoneA
+g2, sg/b1/f1/desk/1001, zoneA
+g2, sg/b1/f1/desk/1002, zoneA
+
+
+#user level denying
+g3, book/update, sandra
+
