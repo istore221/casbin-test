@@ -29,6 +29,7 @@ function CustomFn(...args){
     var arg1 = args[0]
     var arg2 = args[1]
 
+    console.log(arg1)
     console.log(arg2)
 
     return true
@@ -56,13 +57,14 @@ function CustomFn(...args){
 
 	const sub2 = new Sub("jack"); 
 
-	const sub = new Sub("jackz","floor1admin",['zoneA']); 
-	const obj = new Obj("sg/b1/f1/desk/12", "neil", ['zoneA']);
+	const sub = new Sub("jack",null,['zoneA']); 
+	const obj = new Obj("sg/b1/f2/desk/123", "jack", ['zoneA']);
 
-	sub.Group = "somegroupz"
+	sub.Group = "zoneA"
 
+	
 	const mod = 'book'; 
-	const act = 'update';  // create|update|delete,
+	const act = 'create';  // create|update|delete,
 
 
 
