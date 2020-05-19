@@ -56,13 +56,13 @@ function CustomFn(...args){
 
 	const sub2 = new Sub("jack"); 
 
-	const sub = new Sub("jack","flooradmin",['zoneA']); 
-	const obj = new Obj("sg/b1/f2/desk/99999", "neil", ['zoneA']);
+	const sub = new Sub("jackz","floor1admin",['zoneA']); 
+	const obj = new Obj("sg/b1/f1/desk/12", "neil", ['zoneA']);
 
 	sub.Group = "somegroupz"
 
 	const mod = 'book'; 
-	const act = 'create';  // create|update|delete,
+	const act = 'update';  // create|update|delete,
 
 
 
