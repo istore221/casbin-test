@@ -17,27 +17,19 @@ g, sandra, floor3admin
 #user group mapping
 g2, alice, zoneA
 g2, jack, zoneA
+g2, jack, managment
 g2, neil, zoneA 
 g2, sandra, zoneB 
 
 
 #object groups
-g3, sg/b1/f1/desk/1000, zoneA
-g3, sg/b1/f1/desk/1000, zoneB
-g3, sg/b1/f1/desk/1001, zoneA
-g3, sg/b1/f1/desk/1002, zoneA
-g3, sg/b1/f1/desk/1003, zoneA
-g3, sg/b1/f1/desk/1004, zoneB
-g3, sg/b1/f2/desk/12,	zoneA
-g3, sg/b1/f2/room/*,	zoneA
-g3, sg/b1/f5/desk/123, 	zoneA
-g3, sg/b1/f3/desk/123,	zoneA
-g3, sg/b1/f2/desk/123,  zoneA
+g3, sg/b1/f2/desk/1000,  managment
 
 
 #global level operaion access denying for user/role/group
 g4, book/update,	sandra
 g4, book/create,	somerole
+#g4, book/create,	jack
 g4, test/*, 		sandra
 g4, book/create,	somegroup  
 #g4, book/create,	floor1admin
@@ -46,18 +38,12 @@ g4, book/create,	somegroup
 
 
 #global level object access denying for user/role/group
-g5, sg/b1/f3/desk/6500,	 sandra
-g5, sg/b1/f3/chair/*,	 sandra
-g5, sg/b1/f3/chair/*,	 somerole
-g5, sg/b1/f2/desk/99999, neil
-g5, sg/b1/f1/desk/99999, somegroup
-#g5, sg/b1/f1/desk/123,	floor1admin
-#g5, sg/b1/f1/desk/123, jack
-#g5, sg/b1/f1/desk/123, zoneA
-#g5, sg/b1/f2/desk/123, jack
+#g5, sg/b1/f2/desk/1000, managment
+
+
 
 #group level object access allow for (operation, group, user|role)
 g6, book/create, zoneA, jack
-
-
-
+g6, book/create, managment, jack
+#g6, book/create, managment, floor1admin
+g6, book/test, managment, jack

@@ -55,14 +55,15 @@ function CustomFn(...args){
 	await e.buildRoleLinks();
 
 
+
 	const sub2 = new Sub("jack"); 
 
 	const sub = new Sub("jack",null,['zoneA']); 
-	const obj = new Obj("sg/b1/f2/desk/123", "jack", ['zoneA']);
+	const obj = new Obj("sg/b1/f2/desk/1000", "jack", ['zoneA']);
 
-	sub.Group = "zoneA"
+	sub.Group = "managment"
+	sub.Groupz = "managment"
 
-	
 	const mod = 'book'; 
 	const act = 'create';  // create|update|delete,
 
