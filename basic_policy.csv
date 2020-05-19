@@ -1,4 +1,8 @@
 p, sysuser, 		sg/b1/*/*/* 		, * 	, *
+
+p, deskadmin, 		sg/b1/*/desk/* 		, * 	, *
+p, roomadmin, 		sg/b1/*/room/* 		, * 	, *
+
 p, floor1admin, 	sg/b1/f1/*/* 		, * 	, *
 p, floor2admin, 	sg/b1/f2/*/* 		, * 	, *
 p, floor3admin, 	sg/b1/f3/*/* 		, * 	, *
@@ -7,16 +11,34 @@ p, floor3admin, 	sg/b1/f3/*/* 		, * 	, *
 #user role mapping
 g, alice, sysuser
 g, jack, floor1admin
-g, neil, floor2admin
-g, sandra, floor3admin
-
+g, neil, floor2admin 
+g, sandra, floor3admin 
 
 #object groups
 g2, sg/b1/f1/desk/1000, zoneA
+g2, sg/b1/f1/desk/1000, zoneB
 g2, sg/b1/f1/desk/1001, zoneA
 g2, sg/b1/f1/desk/1002, zoneA
+g2, sg/b1/f1/desk/1003, zoneA
+g2, sg/b1/f1/desk/1004, zoneB
 
 
-#user level denying
-g3, book/update, sandra
+#global level operaion access denying for user/role/group
+g3, book/update,	sandra
+g3, book/create,	somerole
+g3, test/*, 		sandra
+g3, book/create,	somegroup   
+
+
+#global level object access denying for user/role/group
+g4, sg/b1/f3/desk/6500,	 sandra
+g4, sg/b1/f3/chair/*,	 sandra
+g4, sg/b1/f3/chair/*,	 somerole
+g4, sg/b1/f2/desk/99999, neil
+g4, sg/b1/f1/desk/99999, somegroup
+#g4, sg/b1/f1/desk/99999, floor1admin
+
+
+
+
 

@@ -3,9 +3,10 @@ var keyMatchFunc = require("./node_modules/casbin/lib/util").keyMatchFunc
 
 class Sub {
   
-  constructor(name, role) {
+  constructor(name, role, groups) {
     this.Name = name;
     this.Role = role;
+    this.Groups = groups;
 
    }
 
@@ -14,9 +15,10 @@ class Sub {
 
 class Obj {
   
-  constructor(rn, owner, Groups) {
+  constructor(rn, owner, groups) {
     this.RN = rn;
     this.Owner = owner;
+    this.Groups = groups;
   }
 
 
@@ -34,7 +36,12 @@ function CustomFn(...args){
 
 
 
+/*
+	
+	issues:  adding role doesnt work
+			 group level access owner delete not working
 
+*/
 
 (async function run() {
 
@@ -46,25 +53,62 @@ function CustomFn(...args){
 	await rm.addMatchingFunc("keyMatch", keyMatchFunc);
 	await e.buildRoleLinks();
 
-	
+
 	const sub2 = new Sub("jack"); 
 
-	const sub = new Sub("sandra"); 
-	const obj = new Obj("sg/b1/f3/desk/1001", sub.Name); 
+	const sub = new Sub("jack","flooradmin",['zoneA']); 
+	const obj = new Obj("sg/b1/f2/desk/99999", "neil", ['zoneA']);
+
+	sub.Group = "somegroupz"
+
 	const mod = 'book'; 
-	const act = 'update';  // create|update|delete,
+	const act = 'create';  // create|update|delete,
 
 
 
-	const res = await e.enforce(sub, obj, mod, act);
-	if (res) {
-	  // permit alice to read data1
-	  console.log("allowed")
+	
+	//default autharization
+	let authorized = await e.enforce(sub, obj, mod, act);
 
-	} else {
-	  // deny the request, show an error
-	  console.log("denied!!!!")
+
+	// if(!authorized){
+
+	// 	   const shared_groups = sub.Groups.filter(value => obj.Groups.includes(value));
+
+	// 		// nop didn't work ..... try using shared group level access
+	// 		if( shared_groups.length > 0){
+
+
+	// 			for(let i=0;i<shared_groups.length;i++){
+
+	// 				let tempS = {...sub, Group: shared_groups[i]}; 
+
+	// 				let group_authorized = await e.enforce(tempS, obj, mod, act);
+
+	// 				if(group_authorized){
+	// 					authorized = true;
+	// 					console.log(`-------authorized at group level ${tempS.Group} ---------`)
+	// 					break;
+	// 				}
+					
+	// 			}
+
+	// 		}
+
+	// }
+
+
+	
+
+	if(authorized){
+		console.log(`${sub.Name} is ALLOWED to perform ${mod}/${act} on resource ${obj.RN}`)
+	}else{
+		console.log(`${sub.Name} is NOT ALLOWED to perform ${mod}/${act} on resource ${obj.RN}`)
 	}
+
+
+
+	
 
 
 
