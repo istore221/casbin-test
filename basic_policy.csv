@@ -1,49 +1,42 @@
-p, sysuser, 		sg/b1/*/*/* 		, * 	, *
+p, sysuser, 		building1Group 				, * 	, *
 
-p, deskadmin, 		sg/b1/*/desk/* 		, * 	, *
-p, roomadmin, 		sg/b1/*/room/* 		, * 	, *
+p, deskadmin, 		buildingDeskOnlyGroup 		, * 	, *
+p, roomadmin, 		buildingRoomOnlyGroup 		, * 	, *
 
-p, floor1admin, 	sg/b1/f1/*/* 		, * 	, *
-p, floor2admin, 	sg/b1/f2/*/* 		, * 	, *
-p, floor3admin, 	sg/b1/f3/*/* 		, * 	, *
+p, floor1admin, 	building1Floor1Group 		, * 	, *
+p, floor2admin, 	building1Floor2Group 		, * 	, *
+p, floor3admin, 	building1Floor3Group 		, * 	, *
+
+p, finn,			zoneA						, book	,create
+p, finn,			zoneB						, book	,create
+
 
 
 #user role mapping
-g, alice, sysuser
-g, jack, floor1admin
-g, neil, floor2admin 
-g, sandra, floor3admin 
-
-#user group mapping
-g2, alice, zoneA
-g2, jack, zoneA
-g2, jack, managment
-g2, neil, zoneA 
-g2, sandra, zoneB 
-
+g, alice, 			sysuser
+g, finn, 			floor1admin
+g, sean, 			floor2admin 
+g, travis, 			floor3admin 
+g, dean, 			deskadmin 
+g, reo, 			roomadmin 
+	
 
 #object groups
-g3, sg/b1/f2/desk/1000,  managment
+g2, 				sg/b1/{floor}/{type}/{id}, 			building1Group
+g2, 				sg/b1/f1/{type}/{id},	  			building1Floor1Group
+g2, 				sg/b1/f2/{type}/{id},	  			building1Floor2Group
+g2, 				sg/b1/f3/{type}/{id},	  			building1Floor3Group
+g2, 				sg/b1/{floor}/desk/{id},	  		buildingDeskOnlyGroup
+g2, 				sg/b1/{floor}/room/{id},	  		buildingRoomOnlyGroup
+
+g2,					sg/b1/f1/desk/10,					zoneA	
+g2,					sg/b1/f1/desk/11,					zoneA
+g2,					sg/b1/f2/desk/12,					zoneA
 
 
-#global level operaion access denying for user/role/group
-g4, book/update,	sandra
-g4, book/create,	somerole
-#g4, book/create,	jack
-g4, test/*, 		sandra
-g4, book/create,	somegroup  
-#g4, book/create,	floor1admin
-#g4, book/create,	jack
-#g4, book/create,	zoneA
+g2,					sg/b1/f1/desk/10,					zoneB	
+g2,					sg/b1/f3/desk/20,					zoneB
+g2,					sg/b1/f2/desk/21,					zoneB
+g2,					sg/b1/f2/char/21,					sg/b1/f2/desk/21
 
 
-#global level object access denying for user/role/group
-#g5, sg/b1/f2/desk/1000, managment
-
-
-
-#group level object access allow for (operation, group, user|role)
-g6, book/create, zoneA, jack
-g6, book/create, managment, jack
-#g6, book/create, managment, floor1admin
-g6, book/test, managment, jack

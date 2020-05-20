@@ -1,5 +1,5 @@
 import { newEnforcer } from 'casbin';
-var keyMatchFunc = require("./node_modules/casbin/lib/util").keyMatchFunc
+var keyMatch4Func = require("./node_modules/casbin/lib/util").keyMatch4Func
 
 class Sub {
   
@@ -51,18 +51,17 @@ function CustomFn(...args){
 	e.addFunction("CustomFn",CustomFn)
 	
 	const rm = e.getRoleManager();
-	await rm.addMatchingFunc("keyMatch", keyMatchFunc);
+	await rm.addMatchingFunc("keyMatch4", keyMatch4Func);
 	await e.buildRoleLinks();
 
 
+	const sub2 = new Sub("dean"); 
 
-	const sub2 = new Sub("jack"); 
+	const sub = new Sub("finn",null,['zoneA']); 
+	const obj = new Obj("sg/b1/f2/desk/21", "finn", ['zoneA']);
 
-	const sub = new Sub("jack",null,['zoneA']); 
-	const obj = new Obj("sg/b1/f2/desk/1000", "jack", ['zoneA']);
-
-	sub.Group = "managment"
-	sub.Groupz = "managment"
+	// sub.Group = "managment"
+	// sub.Groupz = "managment"
 
 	const mod = 'book'; 
 	const act = 'create';  // create|update|delete,
