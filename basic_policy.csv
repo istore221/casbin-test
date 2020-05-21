@@ -23,8 +23,8 @@ g, nick, 			reo
 
 
 #user group mapping
-g2, finn, 			zoneA 
-g2, finn, 			zoneB 
+g2, finn, 			zoneAUser 
+g2, finn, 			zoneBUser 
 
 
 #object groups
@@ -51,7 +51,7 @@ g3,					sg/b1/f2/char/21,					sg/b1/f2/desk/21
 #global object access denying by user|group|role
 
 #g4, 				floor1admin,				sg/b1/f2/desk/21
-g4, 				reo,						sg/b1/f2/desk/21
+#g4, 				floor1admin,				sg/b1/f2/desk/21
 
 
 
