@@ -9,7 +9,7 @@ p, floor3admin, 	building1Floor3Group 		, * 	, *
 
 p, finn,			zoneA						, book	,create
 p, finn,			zoneB						, book	,create
-
+p, finn,			zoneB						, book	,extend
 
 
 #user role mapping
@@ -19,24 +19,43 @@ g, sean, 			floor2admin
 g, travis, 			floor3admin 
 g, dean, 			deskadmin 
 g, reo, 			roomadmin 
-	
+g, nick, 			reo 
+
+
+#user group mapping
+g2, finn, 			zoneA 
+g2, finn, 			zoneB 
+
 
 #object groups
-g2, 				sg/b1/{floor}/{type}/{id}, 			building1Group
-g2, 				sg/b1/f1/{type}/{id},	  			building1Floor1Group
-g2, 				sg/b1/f2/{type}/{id},	  			building1Floor2Group
-g2, 				sg/b1/f3/{type}/{id},	  			building1Floor3Group
-g2, 				sg/b1/{floor}/desk/{id},	  		buildingDeskOnlyGroup
-g2, 				sg/b1/{floor}/room/{id},	  		buildingRoomOnlyGroup
+g3, 				sg/b1/{floor}/{type}/{id}, 			building1Group
+g3, 				sg/b1/f1/{type}/{id},	  			building1Floor1Group
+g3, 				sg/b1/f2/{type}/{id},	  			building1Floor2Group
+g3, 				sg/b1/f3/{type}/{id},	  			building1Floor3Group
+g3, 				sg/b1/{floor}/desk/{id},	  		buildingDeskOnlyGroup
+g3, 				sg/b1/{floor}/room/{id},	  		buildingRoomOnlyGroup
 
-g2,					sg/b1/f1/desk/10,					zoneA	
-g2,					sg/b1/f1/desk/11,					zoneA
-g2,					sg/b1/f2/desk/12,					zoneA
+g3,					sg/b1/f1/desk/10,					zoneA	
+g3,					sg/b1/f1/desk/11,					zoneA
+g3,					sg/b1/f2/desk/12,					zoneA
 
 
-g2,					sg/b1/f1/desk/10,					zoneB	
-g2,					sg/b1/f3/desk/20,					zoneB
-g2,					sg/b1/f2/desk/21,					zoneB
-g2,					sg/b1/f2/char/21,					sg/b1/f2/desk/21
+g3,					sg/b1/f1/desk/10,					zoneB	
+g3,					sg/b1/f3/desk/20,					zoneB
+g3,					sg/b1/f2/desk/21,					zoneB
+g3,					sg/b1/f2/char/21,					sg/b1/f2/desk/21
 
+
+
+
+#global object access denying by user|group|role
+
+#g4, 				floor1admin,				sg/b1/f2/desk/21
+g4, 				reo,						sg/b1/f2/desk/21
+
+
+
+#global act  denying by user|group|role
+#g5, 				zoneA,				book/create
+#g5, 				floor1admin,		book/create
 
